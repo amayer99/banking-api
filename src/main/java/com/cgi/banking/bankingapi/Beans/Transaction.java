@@ -1,4 +1,4 @@
-package Beans;
+package com.cgi.banking.bankingapi.Beans;
 
 import java.sql.Date;
 
