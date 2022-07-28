@@ -1,6 +1,7 @@
 package com.cgi.banking.bankingapi.Services;
 
 import java.util.List;
+import java.util.Optional;
 
 import javax.persistence.EntityNotFoundException;
 
@@ -39,6 +40,17 @@ public class AccountServiceImpl implements AccountService {
     @Override
     public List<Account> getAllAccounts() {
         return accountRepository.findAll();
+    }
+
+    @Override
+    public Account getAccountById(long id){
+        Optional<Account> result = accountRepository.findById(id);
+        if(result.isPresent()){
+            return result.get();
+        }
+        else{
+            throw new EntityNotFoundException(String.valueOf(id));
+        }
     }
     
 }
