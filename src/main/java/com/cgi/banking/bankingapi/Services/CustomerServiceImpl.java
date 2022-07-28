@@ -1,28 +1,23 @@
 package com.cgi.banking.bankingapi.Services;
 
-import java.util.ArrayList;
+
 import java.util.List;
 
 import javax.persistence.EntityNotFoundException;
 
-import org.modelmapper.*;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 import com.cgi.banking.bankingapi.Beans.Customer;
-import com.cgi.banking.bankingapi.Beans.CustomerDTO;
 
 
-import com.cgi.banking.bankingapi.Beans.Customer;
-import com.cgi.banking.bankingapi.Beans.CustomerDTO;
 import com.cgi.banking.bankingapi.Repositories.CustomerRepository;
-import com.cgi.banking.bankingapi.Repositories.CustomerRepository;
+
 
 
 public class CustomerServiceImpl implements CustomerService{
 
     @Autowired CustomerRepository customerRepository;
-    private ModelMapper modelMapper = new ModelMapper();
 
     @Override
     public Customer createCustomer(Customer customer) {

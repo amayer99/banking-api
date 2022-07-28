@@ -12,7 +12,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 
-public class TransctionDTO {
+public class TransactionDTO {
     private Long transactionId;
     private Long amount;
     private Date date;
