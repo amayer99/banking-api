@@ -5,10 +5,13 @@ import java.util.List;
 import javax.persistence.EntityNotFoundException;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.cgi.banking.bankingapi.Beans.Transaction;
 import com.cgi.banking.bankingapi.Repositories.TransactionRepository;
 
+
+@Service
 public class TransactionServiceImpl implements TransactionService{
     @Autowired TransactionRepository transactionRepository;
 

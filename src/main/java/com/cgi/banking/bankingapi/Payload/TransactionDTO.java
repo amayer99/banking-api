@@ -1,4 +1,4 @@
-package com.cgi.banking.bankingapi.Beans;
+package com.cgi.banking.bankingapi.Payload;
 
 import java.sql.Date;
 

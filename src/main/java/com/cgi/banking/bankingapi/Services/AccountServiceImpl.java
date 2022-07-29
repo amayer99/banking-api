@@ -28,6 +28,7 @@ public class AccountServiceImpl implements AccountService {
         Account account = accountRepository.findById(id).orElseThrow(()->new EntityNotFoundException(String.valueOf(id)));
         account.setAccountType(accountRequest.getAccountType());
         account.setCurrentBalance(accountRequest.getCurrentBalance());
+        account.setCustomer(accountRequest.getCustomer());
         return accountRepository.save(account);
     }
 

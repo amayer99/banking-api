@@ -1,4 +1,8 @@
-package com.cgi.banking.bankingapi.Beans;
+package com.cgi.banking.bankingapi.Payload;
+
+import java.util.Set;
+
+import com.cgi.banking.bankingapi.Beans.Account;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -19,4 +23,5 @@ public class CustomerDTO {
     private String stateAbbr;
     private String zipCode;
     private String phoneNumber;
+    private Set<Account> accounts;
 }
