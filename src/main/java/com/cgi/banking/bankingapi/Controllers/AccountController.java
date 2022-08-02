@@ -47,7 +47,7 @@ public class AccountController {
     }
 
 
-    /*not currently functional*/
+    /*not currently functional or used*/
     @PostMapping
     public ResponseEntity<AccountDTO> createAccount(@RequestBody AccountDTO accountDTO){
         
@@ -59,6 +59,7 @@ public class AccountController {
         return new ResponseEntity<AccountDTO>(accountResponse, HttpStatus.CREATED);
     }
 
+    /*not currently used or tested*/
     @PutMapping("/{id}")
     public ResponseEntity<AccountDTO> updateAccount(@PathVariable long id, @RequestBody AccountDTO accountDTO){
         
@@ -70,6 +71,7 @@ public class AccountController {
         return ResponseEntity.ok().body(accountResponse);
     }
 
+    /*not currently used or tested*/
     @DeleteMapping("/{id}")
     public ResponseEntity<ApiResponse> deleteAccount(@PathVariable(name="id") Long id){
         accountService.deleteAccount(id);
