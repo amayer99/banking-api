@@ -10,4 +10,5 @@ public interface AccountService {
     public abstract Account updateAccount(Long id, Account accountRequest);
     public abstract void deleteAccount(Long id);
     public abstract List<Account> getAllAccounts();
+    public abstract Account getAccountById(long id);
 }

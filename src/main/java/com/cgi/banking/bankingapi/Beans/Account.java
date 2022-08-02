@@ -2,7 +2,6 @@ package com.cgi.banking.bankingapi.Beans;
 
 import java.util.Set;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -13,6 +12,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -27,24 +28,30 @@ import lombok.Setter;
 @AllArgsConstructor
 public class Account {
     @Id
+    @Column(name="account_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long accountId;
 
-    @Column(nullable = false, length=10)
+    @Column(name="accountType",nullable = false, length=10)
     private String accountType;
 
-    @Column(nullable = false)
+    @Column(name="currentBalance", nullable = false)
     private Long currentBalance;
 
-    @ManyToOne(fetch = FetchType.EAGER, optional = false)
-    @JoinColumn(name = "customerId", nullable = false) 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JsonBackReference
+    @JoinColumn(name="cid")
     private Customer customer;
 
-    @OneToMany(mappedBy = "sendCustomer", fetch = FetchType.EAGER,
-    cascade = CascadeType.ALL)
+
+    @OneToMany
+    @JoinColumn(name="sender")
     private Set<Transaction> sentTransactions;
 
-    @OneToMany(mappedBy = "recieveCustomer", fetch = FetchType.EAGER,
-    cascade = CascadeType.ALL)
+ 
+    @OneToMany
+    @JoinColumn(name="reciever")
     private Set<Transaction> recievedTransactions;
+
+    
 }

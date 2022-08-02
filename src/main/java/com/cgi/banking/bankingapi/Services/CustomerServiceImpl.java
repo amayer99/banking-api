@@ -2,19 +2,20 @@ package com.cgi.banking.bankingapi.Services;
 
 
 import java.util.List;
+import java.util.Optional;
 
 import javax.persistence.EntityNotFoundException;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.cgi.banking.bankingapi.Beans.Customer;
 
 
 import com.cgi.banking.bankingapi.Repositories.CustomerRepository;
 
-
-
+@Service
 public class CustomerServiceImpl implements CustomerService{
 
     @Autowired CustomerRepository customerRepository;
@@ -48,6 +49,17 @@ public class CustomerServiceImpl implements CustomerService{
     @Override
     public List<Customer> getAllCustomers() {
         return customerRepository.findAll();
+    }
+
+    @Override
+    public Customer getCustomerById(Long id){
+        Optional<Customer> result = customerRepository.findById(id);
+        if(result.isPresent()){
+            return result.get();
+        }
+        else{
+            throw new EntityNotFoundException(String.valueOf(id));
+        }
     }
     
 }
